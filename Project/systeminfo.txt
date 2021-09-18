@@ -1,6 +1,0 @@
-Public IP Address: 49.204.226.230
-Processor: Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
-System Information: Windows 10.0.22454
-Machine Information: AMD64
-Hostname: Deepak
-Private IP Address: 192.168.0.105
