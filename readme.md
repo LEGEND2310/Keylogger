@@ -1,1 +1,2 @@
-Simple keylogger application implemented in python
+Simple keylogger application implemented in python.
+Thanks!
